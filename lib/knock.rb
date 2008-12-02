@@ -15,7 +15,7 @@ class Knock
                 'service' => serv,
                 'source' => APP_NAME }
                 
-      @@token = login
+      @@token ||= login
    end
    
    def self.login
@@ -32,9 +32,9 @@ class Knock
    ## Along with the Content-Lenght(that must exists!) goes the Auth on the header of every request the library does
    ## to Google.
    def self.header
-     {'Cookie' => "Name=#{@@token};Auth=#{@@token};Domain=.google.com;Path=/;Expires=160000000000",
+     {'Cookie' => "Name=#{token};Auth=#{token};Domain=.google.com;Path=/;Expires=160000000000",
       'Content-length' => '0',
-      'Authorization' => "GoogleLogin auth=#{@@token}"}
+      'Authorization' => "GoogleLogin auth=#{token}"}
    end
    
    def self.token
@@ -51,6 +51,5 @@ class Knock
    end
       
 end
-
 
 
