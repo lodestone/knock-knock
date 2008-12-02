@@ -15,21 +15,19 @@ sudo gem install alexgregianin-knock-knock
 
 ### Connecting 
 
-
-Knoc::Knock.connect "youremail@gmail.com","password","google_service*"
+  Knoc::Knock.connect "youremail@gmail.com","password","google_service*"
 
   The google service argument depends on whick api you're trying to access.It can be any of the following:
   
-  Application        Service name
-	- Calendar Data API	cl
-	- Google Base Data API	gbase
-	- Blogger Data API	blogger
-	- Contacts Data API	cp
-	- Documents List Data API	writely
-	- Picasa Web Albums Data API	lh2
-	- Google Apps Provisioning API	apps
-	- Spreadsheets Data API	wise
-	- YouTube Data API	youtube
+	+ Calendar Data API	cl
+	+ Google Base Data API	gbase
+	+ Blogger Data API	blogger
+	+ Contacts Data API	cp
+	+ Documents List Data API	writely
+	+ Picasa Web Albums Data API	lh2
+	+ Google Apps Provisioning API	apps
+	+ Spreadsheets Data API	wise
+	+ YouTube Data API	youtube
 	
 	
 ### Class Variable 
