@@ -1,0 +1,34 @@
+# Knock-Knock!
+
+    Get to use Google APIS!Are you having a hard time to authenticate your plugin/gem on  any of the google apis currently released?
+
+
+use knock-knock the easiest the way go to google and let them open the door for you!
+
+Knock-knock is brought to you by Bubble :) Fun coding for free!
+
+
+## Installing:
+
+sudo gem install alexgregianin-knock-knock
+
+
+### Connecting 
+
+
+Knoc::Knock.connect "youremail@gmail.com","password","google_service*"
+
+  The google service argument depends on whick api you're trying to access.It can be any of the following:
+  
+  Application        Service name
+	Calendar Data API	cl
+	Google Base Data API	gbase
+	Blogger Data API	blogger
+	Contacts Data API	cp
+	Documents List Data API	writely
+	Picasa Web Albums Data API	lh2
+	Google Apps Provisioning API	apps
+	Spreadsheets Data API	wise
+	YouTube Data API	youtube
+
+   
