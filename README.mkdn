@@ -30,5 +30,24 @@ Knoc::Knock.connect "youremail@gmail.com","password","google_service*"
 	Google Apps Provisioning API	apps
 	Spreadsheets Data API	wise
 	YouTube Data API	youtube
+	
+	
+### Class Variable 
+
+	Once you'have connected,you're all set!The necessary headers are saved into the @@token class variable so you don't have to authenticate
+	everytime you request something from Google.Also it memoizes this token,so if you call Knoc::Knock.connect twice,it won't request anything from Google cause it already have the Auth token.
+	
+### GET 
+ 
+    You're now able to do GET request at google using the Google Data api's,which gives you access to any API they have available so far.
+
+    Knoc::Knock.get "https://www.google.com/feeds/accounts/youremail@gmail.com",{}
+
+    The second parameter can be a hash,which automatically will get translated to GET-like parameters.
+
+### TODO 
+
+    POST/PUT/DELETE requests.
+	
 
    
