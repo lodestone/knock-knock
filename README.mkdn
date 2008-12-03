@@ -30,7 +30,7 @@ sudo gem install alexgregianin-knock-knock
 	+ YouTube Data API	youtube
 	
 	
-### Class Variable 
+# Class Variable 
 
 	Once you'have connected,you're all set!The necessary headers are saved into the @@token class variable so you don't have to authenticate
 	everytime you request something from Google.Also it memoizes this token,so if you call Knoc::Knock.connect twice,it won't request anything from Google cause it already have the Auth token.
