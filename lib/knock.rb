@@ -43,7 +43,7 @@ class Knock
    end
  
    def self.get url,params
-     uri = URI.parse(url)
+     uri = URI.parse(url + params.to_get)
      res = Net::HTTP::Get.new(uri.request_uri,header)
      http   = Net::HTTP.new(uri.host, uri.port)     
      http.use_ssl = true
@@ -54,3 +54,10 @@ class Knock
 
 
 end
+
+# Knock.connect "bagabers@gmail.com","filhodaputa456","analytics"
+# 
+# p Knock.get "https://www.google.com/analytics/feeds/data?ids=ga:9804823",{:sort=>"ga:browser,ga:pageviews",:end_date=>"2008-08-10",:start_date=>"2008-07-10",:dimensions=>"ga:browser",:metrics=>"ga:pageviews"}
+
+
+
