@@ -1,4 +1,4 @@
-== 0.0.1 2008-12-06
+== 0.1 2008-12-06
 
-* 1 major enhancement:
-  * Initial release
+* Singleton class for connection with Google
+* Request class for retrieve data from Google

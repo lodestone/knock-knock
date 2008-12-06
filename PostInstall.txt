@@ -1,2 +1,1 @@
-For more information on Knock Knock, see http://knock-knock.bubble.com.br
-
+For more information on Knock Knock, see http://knock-knock.rubyforge.org

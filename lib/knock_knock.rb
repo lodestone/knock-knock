@@ -10,7 +10,7 @@ require File.dirname(__FILE__) + '/bubble/knock_knock/request'
 
 module Bubble
   module KnockKnock
-    VERSION = '0.0.3'
+    VERSION = '0.1'
     APP_NAME = 'KnockKnock Ruby Gem'
   end
 end

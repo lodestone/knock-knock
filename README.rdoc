@@ -1,6 +1,6 @@
 = Knock Knock
 
-http://knock-knock.bubble.com.br
+http://knock-knock.rubyforge.org
 
 == Description
 
