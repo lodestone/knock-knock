@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-class TestKnockKnock < Test::Unit::TestCase  
+class TestKnockKnock < Test::Unit::TestCase # :nodoc:
   include Bubble::KnockKnock
   
   def setup

@@ -3,14 +3,18 @@ $:.unshift(File.dirname(__FILE__)) unless
 
 require 'rubygems'
 require 'active_support'
-require File.dirname(__FILE__) + '/bubble/knock_knock/exceptions'
-require File.dirname(__FILE__) + '/bubble/knock_knock/hash'
-require File.dirname(__FILE__) + '/bubble/knock_knock/connection'
-require File.dirname(__FILE__) + '/bubble/knock_knock/request'
 
+# A project developed by Bubble[http://bubble.com.br]
 module Bubble
+
+  # For more information take a look on README
   module KnockKnock
     VERSION = '0.1'
     APP_NAME = 'KnockKnock Ruby Gem'
   end
 end
+
+require File.dirname(__FILE__) + '/bubble/knock_knock/exceptions'
+require File.dirname(__FILE__) + '/bubble/knock_knock/hash'
+require File.dirname(__FILE__) + '/bubble/knock_knock/connection'
+require File.dirname(__FILE__) + '/bubble/knock_knock/request'

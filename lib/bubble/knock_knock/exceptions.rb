@@ -1,6 +1,4 @@
-module Bubble
-  module KnockKnock
-    class BadLogin < Exception; end
-    class UnstablishedConnection < Exception; end
-  end
-end
+# For login errors
+class Bubble::KnockKnock::BadLogin < Exception; end
+# For requests to Google services without a connection
+class Bubble::KnockKnock::UnstablishedConnection < Exception; end
