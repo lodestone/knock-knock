@@ -5,7 +5,7 @@ module Bubble
   
       # Transforms the hash into a string which will be used to transmit data with the requests.
       def to_uri
-        self.map { |k,v| "#{k}=#{v}"}.join('&')
+        self.sort_by { |k,v| k.to_s }.map { |k,v| "#{k}=#{v}"}.join('&')
       end
   
     end
