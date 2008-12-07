@@ -7,7 +7,7 @@ require 'active_support'
 # A project developed by Bubble[http://bubble.com.br]
 module Bubble
 
-  # For more information take a look on README
+  # For more information take a look at the README
   module KnockKnock
     VERSION = '0.1.1'
     APP_NAME = 'KnockKnock Ruby Gem'

@@ -1,6 +1,6 @@
 = KnockKnock
 
-KnockKnock was made for turn login with Google Authentication API more easy.
+KnockKnock was made to turn login with Google Authentication API easier.
 
 == Features
 * Singleton class for connection with Google.
@@ -25,7 +25,7 @@ KnockKnock was made for turn login with Google Authentication API more easy.
 
 (The MIT License)
 
-Copyright (c) 2008 Bruno Azisaka Maciel
+Copyright (c) 2008 Bubble[http://bubble.com.br]
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

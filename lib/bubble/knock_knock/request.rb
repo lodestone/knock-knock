@@ -1,4 +1,4 @@
-# This class gives you a easy way to request informations from Google.
+# This class gives you an easy way to request informations from Google.
 class Bubble::KnockKnock::Request
   attr_reader :header
   
@@ -13,8 +13,8 @@ class Bubble::KnockKnock::Request
   end
 
   # Get the data from any Google Service.
-  # You just need to indicate the URI of the API and the attributes must be sent with the request.
-  # The content of the response will be returned if all occour as well.
+  # You just need to indicate the URI of the API and the attributes must that be sent with the request.
+  # The response's content will be returned if all occur as well.
   # === Example
   # You must to be connected. Take a look in Connection for more information.
   #

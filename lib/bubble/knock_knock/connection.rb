@@ -4,14 +4,14 @@ require 'net/http'
 require 'net/https'
 
 # This class make the connection between Ruby and Google.
-# It's a Singleton class, turning the management of the connection more easy. Just one connection will be created during all your script.
+# It's a Singleton class, turning the management of the connection easier. Just one connection will be created during all your script.
 class Bubble::KnockKnock::Connection
   include Singleton
   
   attr_accessor :email, :service
   attr_reader :password, :auth
 
-  # This method create the connection. First of all it set up the environment for make the connection and after it stablish the connection with Google
+  # This method creates the connection. First of all it set up the environment to make the connection and after it stablish the connection with Google
   # The service should be (i.e.):
   # * [cp] Google Mail Contact Book
   # * [analytics] Google Analytics
@@ -37,7 +37,7 @@ class Bubble::KnockKnock::Connection
 
   protected
   
-  # It gives the correct values to attributes and variables required for make the connection.
+  # It gives the correct values to attributes and variables required to make the connection.
   def setup
     @uri = URI.parse('https://www.google.com/accounts/ClientLogin')
   
@@ -51,7 +51,7 @@ class Bubble::KnockKnock::Connection
     @http.use_ssl = true
   end
 
-  # Makes the connection with Google. If the login and password are wrong an BadLogin exception occours.
+  # Makes the connection with Google. If the login and password are wrong a BadLogin exception occurs.
   def stablish
     response, body = @http.post(@uri.path, @query.to_uri)
   
