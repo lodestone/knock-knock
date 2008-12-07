@@ -45,7 +45,7 @@ class Bubble::KnockKnock::Connection
                'Email' => @email,
                'Passwd' => @password,
                'service' => @service,
-               'source' => APP_NAME }
+               'source' => Bubble::KnockKnock::APP_NAME }
                     
     @http = Net::HTTP.new(@uri.host, 443)
     @http.use_ssl = true
