@@ -11,7 +11,8 @@ module Bubble
         connection = Bubble::KnockKnock::Connection.instance
         @header = {'Cookie' => "Name=#{connection.auth};Auth=#{connection.auth};Domain=.google.com;Path=/;Expires=160000000000",
                    'Content-length' => '0',
-                   'Authorization' => "GoogleLogin auth=#{connection.auth}" }
+                   'Authorization' => "GoogleLogin auth=#{connection.auth}"
+                   }
       end
 
       # Get the data from any Google Service.
@@ -21,18 +22,44 @@ module Bubble
       # You must to be connected. Take a look in Connection for more information.
       #
       #   Request.get('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full')
-      def self.get(uri, query=nil)
-        @request = self.new
-    
-        uri = URI.parse(uri)
-                    
-        http = Net::HTTP.new(uri.host, 443)
-        http.use_ssl = true
-          
-        response, body = http.get("#{uri.path}?#{query}", @request.header)
+      def self.get(uri, query=nil)        
+        setup('get',uri)
+        response, body = @http.get("#{@uri.path}?#{query}", @request.header)
     
         body
       end
+      
+      # Post data to any Google Service.
+      # You just need to indicate the URI of the API and the attributes must that be sent in the request's body.
+      # A Status code 201 CREATED will be return in case everything goes as planned!
+      # === Example
+      # You must to be connected. Take a look at Connection for more information.
+      #
+      #   Request.post('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full',body)      
+      def self.post(uri,params=nil)    
+        setup('post',uri)    
+        response, body = @http.post(@uri.path,params,@header)  
+        
+        body      
+      end
+      
+      protected 
+      
+      # Generates the basic setup for both GET and POST requests(later on PUT and DELETE also).Any request at Google's services
+      # must have SSL activated.
+      # POST requests at Google always use atom+xml as their content type default.
+      def self.setup(request,uri)
+        
+        @request = self.new    
+        @uri = URI.parse(uri)
+        
+        @header = @request.header.merge('Content-Type' => 'application/atom+xml') if request == 'post'
+        
+        @http = Net::HTTP.new(@uri.host, 443)
+        @http.use_ssl = true        
+      end
+      
+      
     end
   end
 end
