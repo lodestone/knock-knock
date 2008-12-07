@@ -30,6 +30,16 @@ class TestKnockKnock < Test::Unit::TestCase # :nodoc:
     assert_match(/^<\?xml.*/, body)
   end
   
+  def test_bad_request
+    authenticate    
+    new_group = File.open(ATOM_FEED).readlines.join << "this_should_get a bad request"   
+    
+    assert_raise(Bubble::KnockKnock::BadRequest) do
+      Bubble::KnockKnock::Request.post("http://www.google.com/m8/feeds/contacts/bubble.testing%40gmail.com/full",new_group)    
+    end
+    
+  end
+  
   private
   def authenticate
     @kk.connect('bubble.testing@gmail.com', 'bubblerocks', 'cp')

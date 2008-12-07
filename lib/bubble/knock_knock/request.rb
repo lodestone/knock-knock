@@ -40,7 +40,10 @@ module Bubble
         setup('post',uri)    
         response, body = @http.post(@uri.path,params,@header)  
         
-        body      
+        case response.code.to_i
+          when 400; raise BadRequest
+          else; body      
+        end
       end
       
       protected 
