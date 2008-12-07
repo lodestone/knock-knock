@@ -22,9 +22,8 @@ module Bubble
       # You must to be connected. Take a look in Connection for more information.
       #
       #   Request.get('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full')
-      def self.get(uri, query=nil)        
-        setup('get',uri)
-        response, body = @http.get("#{@uri.path}?#{query}", @request.header)
+      def self.get(uri, params=nil)
+        response, body = action(:get, uri, params)
     
         body
       end
@@ -35,34 +34,50 @@ module Bubble
       # === Example
       # You must to be connected. Take a look at Connection for more information.
       #
-      #   Request.post('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full',body)      
-      def self.post(uri,params=nil)    
-        setup('post',uri)    
-        response, body = @http.post(@uri.path,params,@header)  
+      #   Request.post('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full', body)      
+      def self.post(uri, params=nil)
+        response, body = action(:post, uri, params)
         
         case response.code.to_i
           when 400; raise BadRequest
-          else; body      
+          when 409; raise HTTPConflict
+          when 201; body
+          else; response.code << ' => ' << body
         end
       end
       
       protected 
       
-      # Generates the basic setup for both GET and POST requests(later on PUT and DELETE also).Any request at Google's services
+      # Generates the basic setup for both GET and POST requests(later on PUT and DELETE also). Any request at Google's services
       # must have SSL activated.
       # POST requests at Google always use atom+xml as their content type default.
-      def self.setup(request,uri)
+      def self.setup(http_method, uri)
         
-        @request = self.new    
+        @request = self.new
         @uri = URI.parse(uri)
         
-        @header = @request.header.merge('Content-Type' => 'application/atom+xml') if request == 'post'
+        case http_method
+        when :post
+          @request.header.merge!('Content-Type' => 'application/atom+xml')
+        when :get
+          @request.header.merge!('Content-Type' => 'application/xml')
+        end
         
         @http = Net::HTTP.new(@uri.host, 443)
         @http.use_ssl = true        
       end
       
-      
+      # Responsible by makes the right request when the developer points the HTTP Method (Post, Get), adding the parameters and the right header.
+      def self.action(http_method, uri, params)
+        setup(http_method, uri)
+        
+        case http_method
+        when :post
+          @http.post(@uri.path, params, @request.header)
+        when :get
+          @http.get("#{@uri.path}?#{params}", @request.header)
+        end
+      end
     end
   end
 end
