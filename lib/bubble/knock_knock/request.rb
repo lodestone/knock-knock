@@ -2,13 +2,16 @@ module Bubble
   module KnockKnock
     # This class gives you an easy way to request informations from Google.
     class Request
+      include Bubble::KnockKnock
+      include Bubble::KnockKnock::Exceptions
+      
       attr_reader :header
   
       # Finds the Singleton Connection and creates the header structure to requesting informations.
       def initialize
-        raise Bubble::KnockKnock::UnstablishedConnection if Bubble::KnockKnock::Connection.instance.auth.nil?
+        raise UnstablishedConnection if Connection.instance.auth.nil?
     
-        connection = Bubble::KnockKnock::Connection.instance
+        connection = Connection.instance
         @header = {'Cookie' => "Name=#{connection.auth};Auth=#{connection.auth};Domain=.google.com;Path=/;Expires=160000000000",
                    'Content-length' => '0',
                    'Authorization' => "GoogleLogin auth=#{connection.auth}"

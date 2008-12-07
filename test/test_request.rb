@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/test_helper.rb'
 
 class Bubble::KnockKnock::TestRequest < Test::Unit::TestCase # :nodoc: #
   include Bubble::KnockKnock
+  include Bubble::KnockKnock::Exceptions
   
   def setup
     @atom = File.open(File.dirname(__FILE__) + "/fixtures/atom_feed.atom").readlines.join

@@ -10,6 +10,8 @@ module Bubble
     # It's a Singleton class, turning the management of the connection easier. Just one connection will be created during all your script.
     class Connection
       include Singleton
+      include Bubble::KnockKnock
+      include Bubble::KnockKnock::Exceptions
   
       attr_accessor :email, :service
       attr_reader :password, :auth
@@ -48,7 +50,7 @@ module Bubble
                    'Email' => @email,
                    'Passwd' => @password,
                    'service' => @service,
-                   'source' => Bubble::KnockKnock::APP_NAME }
+                   'source' => APP_NAME }
                     
         @http = Net::HTTP.new(@uri.host, 443)
         @http.use_ssl = true
