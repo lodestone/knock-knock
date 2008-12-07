@@ -1,34 +1,38 @@
-# This class gives you an easy way to request informations from Google.
-class Bubble::KnockKnock::Request
-  attr_reader :header
+module Bubble
+  module KnockKnock
+    # This class gives you an easy way to request informations from Google.
+    class Request
+      attr_reader :header
   
-  # Finds the Singleton Connection and creates the header structure to requesting informations.
-  def initialize
-    raise UnstablishedConnection if Connection.instance.auth.nil?
+      # Finds the Singleton Connection and creates the header structure to requesting informations.
+      def initialize
+        raise Bubble::KnockKnock::UnstablishedConnection if Bubble::KnockKnock::Connection.instance.auth.nil?
     
-    connection = Connection.instance
-    @header = {'Cookie' => "Name=#{connection.auth};Auth=#{connection.auth};Domain=.google.com;Path=/;Expires=160000000000",
-               'Content-length' => '0',
-               'Authorization' => "GoogleLogin auth=#{connection.auth}" }
-  end
+        connection = Bubble::KnockKnock::Connection.instance
+        @header = {'Cookie' => "Name=#{connection.auth};Auth=#{connection.auth};Domain=.google.com;Path=/;Expires=160000000000",
+                   'Content-length' => '0',
+                   'Authorization' => "GoogleLogin auth=#{connection.auth}" }
+      end
 
-  # Get the data from any Google Service.
-  # You just need to indicate the URI of the API and the attributes must that be sent with the request.
-  # The response's content will be returned if all occur as well.
-  # === Example
-  # You must to be connected. Take a look in Connection for more information.
-  #
-  #   Request.get('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full')
-  def self.get(uri, query=nil)
-    @request = self.new
+      # Get the data from any Google Service.
+      # You just need to indicate the URI of the API and the attributes must that be sent with the request.
+      # The response's content will be returned if all occur as well.
+      # === Example
+      # You must to be connected. Take a look in Connection for more information.
+      #
+      #   Request.get('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full')
+      def self.get(uri, query=nil)
+        @request = self.new
     
-    uri = URI.parse(uri)
+        uri = URI.parse(uri)
                     
-    http = Net::HTTP.new(uri.host, 443)
-    http.use_ssl = true
+        http = Net::HTTP.new(uri.host, 443)
+        http.use_ssl = true
           
-    response, body = http.get("#{uri.path}?#{query}", @request.header)
+        response, body = http.get("#{uri.path}?#{query}", @request.header)
     
-    body
+        body
+      end
+    end
   end
 end
