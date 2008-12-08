@@ -11,14 +11,14 @@ class Bubble::KnockKnock::TestRequest < Test::Unit::TestCase # :nodoc: #
   
   def test_retrieving_data
     assert content = Request.get("http://www.google.com/m8/feeds/contacts/bubble.testing%40gmail.com/full")
-    assert_match(/^<\?xml.*/, content)
+    assert_match(/^<\?xml.*$/, content)
   end
   
   def test_deleting_contact
     create_contact
     
     assert content = Request.delete(@contact.delete_uri)
-    assert_match(/^<\?xml.*/, content)
+    assert_match(/^<\?xml.*$/, content)
   end
   
   def test_updating_contact
@@ -26,13 +26,13 @@ class Bubble::KnockKnock::TestRequest < Test::Unit::TestCase # :nodoc: #
     @contact.change_title
     
     content = Request.put(@contact.edit_uri,@contact.content)
-    assert_match(/^<\?xml.*/, content)    
+    assert_match(/^<\?xml.*$/, content)
     
-    # Everytime you update something at Google,your edit url changes,which means 
-    # you have to instanciate a new contact in order to work    
-    @contact = Contact.new(content)    
+    # Everytime you update something at Google, your edit url changes, which means 
+    # you have to instanciate a new contact in order to work
+    @contact = Contact.new(content)
     assert content = Request.delete(@contact.delete_uri)
-    assert_match(/^<\?xml.*/, content)   
+    assert_match(/^<\?xml.*$/, content)
   end
     
   def test_bad_request
@@ -50,6 +50,6 @@ class Bubble::KnockKnock::TestRequest < Test::Unit::TestCase # :nodoc: #
   
   def create_contact
     @content = Request.post("http://www.google.com/m8/feeds/contacts/bubble.testing%40gmail.com/full", @atom)
-    @contact = Contact.new(@content)    
+    @contact = Contact.new(@content)
   end
 end

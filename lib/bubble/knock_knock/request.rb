@@ -84,8 +84,7 @@ module Bubble
         when :delete
           @request.header.merge!('Content-Type' => 'application/atom+xml')
         when :put
-          @request.header.merge!('X-HTTP-Method-Override' =>'PUT')
-          @request.header.merge!('Content-Type' => 'application/atom+xml')
+          @request.header.merge!('X-HTTP-Method-Override' =>'PUT', 'Content-Type' => 'application/atom+xml')
         end
         
         @http = Net::HTTP.new(@uri.host, 443)
@@ -104,18 +103,17 @@ module Bubble
         when :delete
           @http.delete(@uri.path, @request.header)
         when :put
-          @http.post(@uri.path,params, @request.header)
+          @http.post(@uri.path, params, @request.header)
         end
       end
       
+      # Returns the request's response, might be a error or XML
       def self.handling
         
         case @response.code.to_i
           when 400; raise BadRequest
           when 409; raise HTTPConflict
-          when 201; @body
-          when 200; @body
-          else; @response.code << ' => ' << @body
+          else; @body
         end
         
       end

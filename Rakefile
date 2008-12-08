@@ -9,10 +9,11 @@ $hoe = Hoe.new('knock-knock', Bubble::KnockKnock::VERSION) do |p|
   # p.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   p.rubyforge_name       = 'knock-knock' # TODO this is default value
   p.extra_deps         = [
-    ['activesupport','>= 2.0.2'],
+    ['activesupport','>= 2.0.2']
   ]
   p.extra_dev_deps = [
-    ['newgem', ">= #{::Newgem::VERSION}"]
+    ['newgem', ">= #{::Newgem::VERSION}"],
+    ['xml-object', '>= 0.9.8']
   ]
   
   p.clean_globs |= %w[**/.DS_Store tmp *.log]

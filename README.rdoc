@@ -5,6 +5,7 @@ KnockKnock was made to turn login with Google Authentication API easier.
 == Features
 * Singleton class for connection with Google.
 * Simple authentication and clear code.
+* GET, POST, PUT, DELETE method implemented
 
 == Synopsis
 
