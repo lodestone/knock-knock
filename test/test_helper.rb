@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'xml-object'
 require 'stringio'
 require 'test/unit'
 require File.dirname(__FILE__) + '/resources/contact'

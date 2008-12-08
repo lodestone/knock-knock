@@ -1,5 +1,4 @@
-require 'rubygems'
-require 'xml-object'
+
 
 class Contact
   
