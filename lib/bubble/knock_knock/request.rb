@@ -26,8 +26,7 @@ module Bubble
       #
       #   Request.get('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full')
       def self.get(uri, params=nil)
-        response, body = action(:get, uri, params)
-    
+        response, body = action(:get, uri, params)    
         body
       end
       
@@ -39,14 +38,32 @@ module Bubble
       #
       #   Request.post('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full', body)      
       def self.post(uri, params=nil)
-        response, body = action(:post, uri, params)
-        
-        case response.code.to_i
-          when 400; raise BadRequest
-          when 409; raise HTTPConflict
-          when 201; body
-          else; response.code << ' => ' << body
-        end
+        @response, @body = action(:post, uri, params)        
+        handling
+      end
+      
+      # Delete data at any Google Service.
+      # You just need to indicate the URI of the API and also get the entity's ID you're trying to delete.
+      # For more information on how to get the entity's ID,go to google code and check it out.
+      # === Example
+      # You must to be connected. Take a look at Connection for more information.
+      #
+      #   Request.delete('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full/6f669dbb0f3d75ce/1228698987605000')
+      def self.delete(uri,params=nil)
+        @response, body = action(:delete, uri, params)        
+        handling
+      end
+      
+      # Update data at any Google Service.
+      # You just need to indicate the URI of the API and also get the entity's ID you're trying to delete.
+      # For more information on how to get the entity's ID,go to google code and check it out.
+      # === Example
+      # You must to be connected. Take a look at Connection for more information.
+      #
+      #   Request.put('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full/6f669dbb0f3d75ce/1228698987605000')      
+      def self.put(uri,params=nil)
+        @response, @body = action(:put, uri, params)        
+        handling
       end
       
       protected 
@@ -64,6 +81,11 @@ module Bubble
           @request.header.merge!('Content-Type' => 'application/atom+xml')
         when :get
           @request.header.merge!('Content-Type' => 'application/xml')
+        when :delete
+          @request.header.merge!('Content-Type' => 'application/atom+xml')
+        when :put
+          @request.header.merge!('X-HTTP-Method-Override' =>'PUT')
+          @request.header.merge!('Content-Type' => 'application/atom+xml')
         end
         
         @http = Net::HTTP.new(@uri.host, 443)
@@ -79,8 +101,25 @@ module Bubble
           @http.post(@uri.path, params, @request.header)
         when :get
           @http.get("#{@uri.path}?#{params}", @request.header)
+        when :delete
+          @http.delete(@uri.path, @request.header)
+        when :put
+          @http.post(@uri.path,params, @request.header)
         end
       end
+      
+      def self.handling
+        
+        case @response.code.to_i
+          when 400; raise BadRequest
+          when 409; raise HTTPConflict
+          when 201; @body
+          when 200; @body
+          else; @response.code << ' => ' << @body
+        end
+        
+      end
+      
     end
   end
 end

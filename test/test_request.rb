@@ -14,15 +14,26 @@ class Bubble::KnockKnock::TestRequest < Test::Unit::TestCase # :nodoc: #
     assert_match(/^<\?xml.*/, content)
   end
   
-  def test_retrieving_post_feed
-    # Cause the contact is all right created, it can't be created again. Then a 409 occurs (HTTP Conflict).
-    # We need to implement the DELETE HTTP Method to delete this contact.
+  def test_deleting_contact
+    create_contact
     
-    assert_raise(HTTPConflict) do
-      Request.post("http://www.google.com/m8/feeds/contacts/bubble.testing%40gmail.com/full", @atom)
-    end
+    assert content = Request.delete(@contact.delete_uri)
+    assert_match(/^<\?xml.*/, content)
   end
   
+  def test_updating_contact
+    create_contact
+    @contact.change_title
+    
+    content = Request.put(@contact.edit_uri,@contact.content)
+    
+    # Everytime you update something at Google,your edit url changes,which means 
+    # you have to instanciate a new contact in order to work    
+    @contact = Contact.new(content)    
+    assert content = Request.delete(@contact.delete_uri)
+
+  end
+    
   def test_bad_request
     bad_atom = @atom << "this_should_get a bad request" 
     
@@ -34,5 +45,10 @@ class Bubble::KnockKnock::TestRequest < Test::Unit::TestCase # :nodoc: #
   private
   def authenticate
     Connection.instance.connect('bubble.testing@gmail.com', 'bubblerocks', 'cp')
+  end
+  
+  def create_contact
+    @content = Request.post("http://www.google.com/m8/feeds/contacts/bubble.testing%40gmail.com/full", @atom)
+    @contact = Contact.new(@content)    
   end
 end
