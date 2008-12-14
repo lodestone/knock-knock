@@ -88,7 +88,7 @@ module Bubble
         end
         
         @http = Net::HTTP.new(@uri.host, 443)
-        @http.use_ssl = true        
+        @http.use_ssl = true
       end
       
       # Responsible by makes the right request when the developer points the HTTP Method (Post, Get), adding the parameters and the right header.
