@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{knock-knock}
-  s.version = "0.1.5"
+  s.version = "0.1.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bruno Azisaka Maciel", "Alex Gregianin"]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{}
   s.email = ["bruno@dookie.com.br"]
   s.extra_rdoc_files = ["History.txt", "README.rdoc"]
-  s.files = ["History.txt", "README.rdoc", "Rakefile", "lib/knock_knock.rb", "lib/bubble/knock_knock/connection.rb", "lib/bubble/knock_knock/exceptions.rb", "lib/bubble/knock_knock/hash.rb", "lib/bubble/knock_knock/request.rb", "script/console", "script/destroy", "script/generate", "test/test_helper.rb", "test/test_knock_knock.rb", "test/test_hash.rb", "test/test_request.rb"]
+  s.files = ["History.txt", "README.rdoc", "lib/knock_knock.rb", "lib/bubble/knock_knock/connection.rb", "lib/bubble/knock_knock/exceptions.rb", "lib/bubble/knock_knock/hash.rb", "lib/bubble/knock_knock/request.rb", "lib/bubble/knock_knock/services.rb", "test/test_hash.rb", "test/test_helper.rb", "test/test_knock_knock.rb", "test/test_request.rb"]
   s.has_rdoc = true
   s.homepage = %q{KnockKnock was made to turn login with Google Authentication API easier.}
   s.rdoc_options = ["--main", "README.rdoc"]
