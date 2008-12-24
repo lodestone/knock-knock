@@ -15,9 +15,13 @@ KnockKnock was made to turn login with Google Authentication API easier.
   
   include Bubble::KnockKnock
   
-  Connection.connect('email@gmail.com', 'password', 'cp')
+  Connection.connect('email@gmail.com', 'password', Services::GoogleContacts)
   
   print Request.get('http://www.google.com/m8/feeds/contacts/email%40gmail.com/full')
+
+== Services
+
+All the API for any Google Service works with KnockKnock. You can check the Services module to see some examples.
 
 == Install
 

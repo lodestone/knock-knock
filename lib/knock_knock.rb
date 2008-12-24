@@ -15,6 +15,7 @@ module Bubble
 end
 
 require File.dirname(__FILE__) + '/bubble/knock_knock/exceptions'
+require File.dirname(__FILE__) + '/bubble/knock_knock/services'
 require File.dirname(__FILE__) + '/bubble/knock_knock/hash'
 require File.dirname(__FILE__) + '/bubble/knock_knock/connection'
 require File.dirname(__FILE__) + '/bubble/knock_knock/request'

@@ -7,11 +7,11 @@ class TestKnockKnock < Test::Unit::TestCase # :nodoc:
   def test_stablish_connection
     assert_raise(BadLogin) { Connection.connect('test@gmail.com', 'password', 'xapi') }
     
-    Connection.connect('bubble.testing@gmail.com', 'bubblerocks', 'cp')
+    Connection.connect('bubble.testing@gmail.com', 'bubblerocks', Services::GoogleContacts)
     assert google = Connection.auth
     
     # Test with a hosted Google Account
-    Connection.connect('test@bubble.com.br', 'B48938', 'cp')
+    Connection.connect('test@bubble.com.br', 'B48938', Services::GoogleApps)
     assert Connection.auth
     assert Connection.auth != google
   end
