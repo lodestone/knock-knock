@@ -6,7 +6,7 @@ KnockKnock was made to turn login with Google Authentication API easier.
 * Singleton class for connection with Google.
 * Simple authentication and clear code.
 * GET, POST, PUT, DELETE method implemented
-* Connection with any Google Account, even (Hosted Google Accounts)[http://google.com/a]
+* Connection with any Google Account, even Hosted Google Accounts[http://google.com/a]
 
 == Synopsis
 
@@ -24,7 +24,7 @@ KnockKnock was made to turn login with Google Authentication API easier.
   sudo gem install knock-knock
 
 == Contributors
-* (Jonathan Towell)[http://moxiemachine.com/blog]
+* Jonathan Towell (http://moxiemachine.com/blog)
 
 == License
 
