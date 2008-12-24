@@ -43,6 +43,7 @@ module Bubble
       protected
   
       # It gives the correct values to attributes and variables required to make the connection.
+      # You can connect with any Google Account, even it's a hosted account (thanks, Jonathan Towell)
       def setup
         @uri = URI.parse('https://www.google.com/accounts/ClientLogin')
   

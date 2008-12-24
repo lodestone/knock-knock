@@ -12,6 +12,11 @@ class TestKnockKnock < Test::Unit::TestCase # :nodoc:
     assert_raise(BadLogin) { @kk.connect('test@gmail.com', 'password', 'xapi') }
     
     @kk.connect('bubble.testing@gmail.com', 'bubblerocks', 'cp')
+    assert google = @kk.auth
+    
+    # Test with a hosted Google Account
+    @kk.connect('test@bubble.com.br', 'B48938', 'cp')
     assert @kk.auth
+    assert @kk.auth != google
   end
 end

@@ -9,7 +9,7 @@ module Bubble
 
   # For more information take a look at the README
   module KnockKnock
-    VERSION = '0.1.4'
+    VERSION = '0.1.5'
     APP_NAME = 'KnockKnock Ruby Gem'
   end
 end

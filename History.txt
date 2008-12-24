@@ -1,3 +1,7 @@
+== 0.1.5 2008-12-08
+* New features
+  * Connection with any Google Accounts, even Hosted Google Accounts
+
 == 0.1.4 2008-12-08
 
 * New features
