@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name = %q{knock-knock}
-  s.version = "0.1.6"
+  s.version = "0.1.6.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Bruno Azisaka Maciel", "Alex Gregianin"]
+  s.authors = ["Bruno Azisaka Maciel"]
   s.date = %q{2008-12-24}
   s.description = %q{}
   s.email = ["bruno@dookie.com.br"]
