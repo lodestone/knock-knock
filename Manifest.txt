@@ -1,14 +1,8 @@
 History.txt
-Manifest.txt
 README.rdoc
-Rakefile
 lib/knock_knock.rb
 lib/bubble/knock_knock/connection.rb
 lib/bubble/knock_knock/exceptions.rb
 lib/bubble/knock_knock/hash.rb
 lib/bubble/knock_knock/request.rb
-script/console
-script/destroy
-script/generate
-test/test_helper.rb
-test/test_knock_knock.rb
+lib/bubble/knock_knock/services.rb

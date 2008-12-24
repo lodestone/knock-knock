@@ -21,7 +21,7 @@ KnockKnock was made to turn login with Google Authentication API easier.
 
 == Services
 
-All the API for any Google Service works with KnockKnock. You can check the Services module to see some examples.
+All the API for any Google Service works with KnockKnock. You can check the Services[http://knock-knock.rubyforge.org/rdoc/classes/Bubble/KnockKnock/Services.html] module to see some examples.
 
 == Install
 
