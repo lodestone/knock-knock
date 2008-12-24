@@ -1,3 +1,8 @@
+== 0.1.6 2008-12-24
+* Refatoring
+* New features
+  * Added Services module with Google Services code shortcuts
+  
 == 0.1.5 2008-12-24
 * New features
   * Connection with any Google Accounts, even Hosted Google Accounts
