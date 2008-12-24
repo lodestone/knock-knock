@@ -46,7 +46,7 @@ module Bubble
       def setup
         @uri = URI.parse('https://www.google.com/accounts/ClientLogin')
   
-        @query = { 'accountType' => 'GOOGLE',
+        @query = { 'accountType' => 'HOSTED_OR_GOOGLE',
                    'Email' => @email,
                    'Passwd' => @password,
                    'service' => @service,
