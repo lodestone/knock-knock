@@ -29,7 +29,7 @@ module Bubble
       Youtube = 'youtube'
       
       # http://code.google.com/apis/picasaweb/developers_guide_protocol.html#ClientLogin
-      Picasa = 'picasa'
+      Picasa = 'lh2'
       
     end
   end
