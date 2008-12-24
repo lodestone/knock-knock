@@ -4,19 +4,15 @@ class TestKnockKnock < Test::Unit::TestCase # :nodoc:
   include Bubble::KnockKnock
   include Bubble::KnockKnock::Exceptions
   
-  def setup
-    @kk = Connection.instance
-  end
-  
   def test_stablish_connection
-    assert_raise(BadLogin) { @kk.connect('test@gmail.com', 'password', 'xapi') }
+    assert_raise(BadLogin) { Connection.connect('test@gmail.com', 'password', 'xapi') }
     
-    @kk.connect('bubble.testing@gmail.com', 'bubblerocks', 'cp')
-    assert google = @kk.auth
+    Connection.connect('bubble.testing@gmail.com', 'bubblerocks', 'cp')
+    assert google = Connection.auth
     
     # Test with a hosted Google Account
-    @kk.connect('test@bubble.com.br', 'B48938', 'cp')
-    assert @kk.auth
-    assert @kk.auth != google
+    Connection.connect('test@bubble.com.br', 'B48938', 'cp')
+    assert Connection.auth
+    assert Connection.auth != google
   end
 end

@@ -9,13 +9,11 @@ module Bubble
   
       # Finds the Singleton Connection and creates the header structure to requesting informations.
       def initialize
-        raise UnstablishedConnection if Connection.instance.auth.nil?
-    
-        connection = Connection.instance
-        @header = {'Cookie' => "Name=#{connection.auth};Auth=#{connection.auth};Domain=.google.com;Path=/;Expires=160000000000",
+        raise UnstablishedConnection if Connection.auth.nil?
+      
+        @header = {'Cookie' => "Name=#{Connection.auth};Auth=#{Connection.auth};Domain=.google.com;Path=/;Expires=160000000000",
                    'Content-length' => '0',
-                   'Authorization' => "GoogleLogin auth=#{connection.auth}"
-                   }
+                   'Authorization' => "GoogleLogin auth=#{Connection.auth}" }
       end
 
       # Get the data from any Google Service.

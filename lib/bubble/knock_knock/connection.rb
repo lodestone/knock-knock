@@ -26,6 +26,16 @@ module Bubble
       #   require 'knock_knock'
       #   
       #   Bubble::KnockKnock::Connection.connect('email@gmail.com', 'password', 'cp')
+      def self.connect(email, password, service)
+        instance.connect(email, password, service)
+      end
+      
+      # Retrieve the Auth Token required for authentications on all Google Services.
+      def self.auth
+        instance.auth
+      end
+
+      # This method creates the connection, but internally. To create the connection you must use Connection.connect() method.
       def connect(email, password, service)
         @email = email
         @password = password
@@ -34,14 +44,8 @@ module Bubble
         setup
         stablish
       end
-  
-      # Retrieve the Auth Token required for authentications on all Google Services.
-      def auth
-        @auth
-      end
 
       protected
-  
       # It gives the correct values to attributes and variables required to make the connection.
       # You can connect with any Google Account, even it's a hosted account (thanks, Jonathan Towell)
       def setup

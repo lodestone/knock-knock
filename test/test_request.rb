@@ -45,7 +45,7 @@ class Bubble::KnockKnock::TestRequest < Test::Unit::TestCase # :nodoc: #
   
   private
   def authenticate
-    Connection.instance.connect('bubble.testing@gmail.com', 'bubblerocks', 'cp')
+    Connection.connect('bubble.testing@gmail.com', 'bubblerocks', 'cp')
   end
   
   def create_contact
